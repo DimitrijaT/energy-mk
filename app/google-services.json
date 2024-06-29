@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1043555338912",
+    "firebase_url": "https://rkeapp-d25a4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "rkeapp-d25a4",
+    "storage_bucket": "rkeapp-d25a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043555338912:android:6befd43aa29cbd14f117c5",
+        "android_client_info": {
+          "package_name": "mk.ukim.finki.energymk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgvCr5X9S6pW9QBaS9vp4zVavZwqPtMVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
