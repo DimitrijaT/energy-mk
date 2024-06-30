@@ -17,7 +17,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Autorenew
 import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.WaterDrop
+import androidx.compose.material.icons.filled.WindPower
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -140,13 +142,18 @@ sealed class Screen(
         Screen("electricity", R.string.electricity, Icons.Filled.Bolt, "Electricity")
 
     object DistrictHeating :
-        Screen("district_heating", R.string.districtHeating, Icons.Filled.Air, "District Heating")
+        Screen(
+            "district_heating",
+            R.string.districtHeating,
+            Icons.Filled.LocalFireDepartment,
+            "District Heating"
+        )
 
     object RenewableSources :
         Screen(
             "renewable_sources",
             R.string.renewable_sources,
-            Icons.Filled.Autorenew,
+            Icons.Filled.WindPower,
             "Renewable Sources"
         )
 }
