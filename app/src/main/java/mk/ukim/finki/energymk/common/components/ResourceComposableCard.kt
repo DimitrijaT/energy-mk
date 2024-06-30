@@ -1,9 +1,11 @@
 package mk.ukim.finki.energymk.common.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,17 +25,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mk.ukim.finki.energymk.model.EnergyResource
+import mk.ukim.finki.energymk.screens.main.Screen
 import mk.ukim.finki.energymk.ui.theme.CryptoWhite
 import mk.ukim.finki.energymk.ui.theme.LightCarmin
 import mk.ukim.finki.energymk.ui.theme.LightOlive
 
 @Composable
-fun ResourceComposableCard(energyResource: EnergyResource) {
+fun ResourceComposableCard(
+    energyResource: EnergyResource = EnergyResource(),
+    navigateTo: (route: String, id: String) -> Unit,
+) {
     Card(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .padding(start = 5.dp, end = 5.dp, bottom = 5.dp),
+            .padding(start = 5.dp, end = 5.dp, top = 10.dp)
+            .clickable {
+                navigateTo(
+                    Screen.EnergyResourceDetailsScreen.route,
+                    energyResource.name
+                )
+            },
         colors = CardDefaults.cardColors(containerColor = CryptoWhite)
     ) {
         Row(
@@ -43,25 +55,31 @@ fun ResourceComposableCard(energyResource: EnergyResource) {
                 .padding(15.dp)
                 .fillMaxWidth()
         ) {
-            ResourceName(energyResource.name, energyResource.category)
-            TimelineChart(
-                Modifier
-                    .height(40.dp)
-                    .width(90.dp), energyResource.getList()
-            )
-            ValueView(energyResource.getLatestValue(), energyResource.unit)
+            ResourceName(energyResource.name, energyResource.getLatestKey())
+            if (energyResource.getList().size > 1) {
+                Spacer(modifier = Modifier.width(10.dp))
+                TimelineChart(
+                    Modifier
+                        .height(40.dp)
+                        .width(100.dp),
+                    energyResource.getList()
+                )
+            } else {
+                Spacer(modifier = Modifier.width(50.dp))
+            }
 
+            ValueView(energyResource.getLatestValue(), energyResource.unit)
         }
     }
 }
 
 
 @Composable
-private fun ResourceName(name: String = "Apple Inc.", category: String = "AAPL") {
+private fun ResourceName(name: String = "Apple Inc.", date: String = "AAPL") {
     Column(
         modifier = Modifier
             .padding(start = 10.dp, end = 5.dp)
-            .width(200.dp)
+            .width(150.dp)
     ) {
         Text(
             text = name,
@@ -71,7 +89,7 @@ private fun ResourceName(name: String = "Apple Inc.", category: String = "AAPL")
             overflow = TextOverflow.Ellipsis,
             maxLines = 3
         )
-        Text(text = category, style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+        Text(text = date, style = MaterialTheme.typography.labelSmall, color = Color.Gray)
     }
 }
 
@@ -80,7 +98,8 @@ private fun ResourceName(name: String = "Apple Inc.", category: String = "AAPL")
 fun ValueView(currentValue: Float = 113.02211f, unit: String = "USD") {
     Column(
         modifier = Modifier
-            .padding(start = 10.dp),
+            .padding(start = 10.dp, end = 10.dp)
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.End
     ) {
         Text(
