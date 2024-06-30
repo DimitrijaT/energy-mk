@@ -1,5 +1,6 @@
 package mk.ukim.finki.energymk.screens.listResources
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable

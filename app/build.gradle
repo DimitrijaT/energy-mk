@@ -93,11 +93,17 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
 
-
     implementation "androidx.compose.material:material:1.6.8"
     implementation "androidx.navigation:navigation-compose:2.7.7"
     implementation "androidx.navigation:navigation-testing:2.7.7"
     implementation "androidx.compose.material:material-icons-extended:1.6.8"
 //    implementation libs.accompanist.navigation.animation
 //    implementation "androidx.navigation:navigation-compose:$nav_version"
+
+
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m2)
+    implementation(libs.vico.compose.m3)
+    implementation(libs.vico.core)
+    implementation(libs.vico.views)
 }

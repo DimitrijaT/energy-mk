@@ -1,6 +1,11 @@
 package mk.ukim.finki.energymk.model
 
 import com.google.firebase.firestore.DocumentId
+import com.google.type.DateTime
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
 
 class EnergyResource {
     @DocumentId
@@ -31,4 +36,15 @@ class EnergyResource {
     fun getList(): List<Float> {
         return timeline.values.toList()
     }
+
+//    fun getOrderedKeys(): List<Date> {
+//
+//        var keyList: List<Date?> = this.timeline.keys.map {
+//            SimpleDateFormat("dd.MM.yyyy").parse(it)
+//        }
+//
+//        keyList = keyList.sortedBy { it }
+//
+//        return keyList.filterNotNull()
+//    }
 }
